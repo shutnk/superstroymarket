@@ -127,3 +127,4 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .cta-box { flex-direction: column; text-align: center; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
+.logo-icon { padding: 4px; background: #fff; }
