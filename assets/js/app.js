@@ -429,6 +429,17 @@ function submitCheckout(f){
   box.style.display="none";
   var t=totals(delivery);
   var order={number:orderNo(),createdAt:new Date().toISOString(),name:name,phone:phone,email:email,
+    try {
+      fetch("https://api.telegram.org/bot9159278260:AAHrTLTca0wQ7u8Eu4Ru5yPcczNwZEOrfho/sendMessage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: "5468112563",
+          text: "🔥 <b>Новый заказ!</b>\n\n👤 Имя: " + name + "\n📞 Тел: " + phone + "\n📍 Адрес: " + address,
+          parse_mode: "HTML"
+        })
+      }).catch(e => console.log("TG Error:", e));
+    } catch(e) { console.log("TG Error:", e); }
     delivery:delivery,address:delivery==="pickup"?PICKUP:address,payment:payment,comment:comment,status:"new",
     items:t.ls.map(function(l){return {name:l.p.n,qty:l.q,price:l.p.pr,unit:l.p.u}}),
     subtotal:t.sub,fee:t.fee,total:t.total};
