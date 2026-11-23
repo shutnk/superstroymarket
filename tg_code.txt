@@ -1,0 +1,11 @@
+    // ОТПРАВКА В TELEGRAM
+    fetch("https://api.telegram.org/bot9159278260:AAHrTLTca0wQ7u8Eu4Ru5yPcczNwZEOrfho/sendMessage", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: "5468112563",
+        text: "🔥 Новый заказ! Имя: " + data.get("name") + ", Тел: " + data.get("phone") + ", Адрес: " + (data.get("address") || "Самовывоз"),
+        parse_mode: "HTML"
+      })
+    }).catch(e => console.log(e));
+    // КОНЕЦ ОТПРАВКИ
