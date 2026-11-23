@@ -1,0 +1,8 @@
+  // ОТПРАВКА В TELEGRAM
+  const tgText = `🔥 <b>Новый заказ!</b>\n\n🔢 Номер: ${order.number}\n👤 Имя: ${order.name}\n📞 Телефон: ${order.phone}\n📍 Адрес: ${order.address}\n💰 Сумма: ${order.total} ₽`;
+  fetch(`https://api.telegram.org/bot9159278260:AAHrTLTca0wQ7u8Eu4Ru5yPcczNwZEOrfho/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: '5468112563', text: tgText, parse_mode: 'HTML' })
+  }).catch(e => console.log(e));
+  // КОНЕЦ ОТПРАВКИ
